@@ -1,1 +1,3 @@
-# oki2021_2022
+# Projekty OKI 2021/2022
+
+###### Program numer 23 - Analizator logow - map
