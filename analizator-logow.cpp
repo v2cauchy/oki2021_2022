@@ -2,11 +2,13 @@
 Rozwiazanie zadania Analizator logow
 Zadanie wymaga uzycia map
 Link do zadania: https://szkopul.edu.pl/problemset/problem/alo/site
-Wersja 1.1
+Wersja 1.2
 Zawiera 
 a. strukture programu: switch / case
 b. map
 c. Wczytywanie wypisywanie
+d. Poprawne sorotowanie map
+100/100 punktow
  */
 
 
@@ -14,6 +16,20 @@ c. Wczytywanie wypisywanie
 #include <vector>
 #include <map>
 using namespace std;
+
+//struktura ktora mowi w jakiej kolejnosci 
+//maja byc posortowane klucze/indeksy elementy w map
+struct Porownaj {
+ bool operator()(const vector<int> &lewy, const vector<int> &prawy) const {
+    if ( lewy[3] != prawy[3] ) //najpierw sortuj po oktet_3
+	   return (lewy[3] < prawy[3]); //rosnaco
+    if ( lewy[0] != prawy[0] ) //dalej sortuj po oktet_0
+	   return (lewy[0] < prawy[0]); //rosnaco
+    if ( lewy[1] != prawy[1] )
+	   return (lewy[1] < prawy[1]);
+    return (lewy[2] < prawy[2]);
+ }
+};
 
 //Wczytyjemy adres IP (cztery liczby int) do vector adres_ip_vector
 //znak & oznacza, ze zmiana adres_ip_vector bedzie widoczna w funkcji 
